@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+:root{
+   --formfont:'Goudy Bookletter 1911', serif;
+   --inputfont:'Caveat', cursive;
+}
+body{
+    background-image: url('https://images.pexels.com/photos/3930092/pexels-photo-3930092.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+    background-size: cover;
+}
+nav{
+    border-bottom:1px solid black ;
+    
+box-shadow: 2px 2px 8px black;
+}
+#search{
+    margin-top: 40px;
+}
+#Yard_Name{
+    color: white;
+    width: 300px;
+}
+#Yard_Name::placeholder{
+color: white;
+}
+.container1{
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    width: 450px;
+    background-color: #0000004d;
+    height: 60vh;
+    margin-left: 500px;
+    margin-top: 180px;
+    padding: 30px;
+}
+.mt-5search h1{
+    font-weight: 900;
+    font-size: 60px;
+    margin-bottom: 40px;
+    font-family:monospace
+}
+.mt-5search label{
+font-family: var(--inputfont);
+font-size: 30px;
+}
+.btn{
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+.btn:hover{
+    color: white;
+    transform: translatey(-10px);
+    box-shadow: #000000 0px 0px 8px;
+}
+
+option{
+    width: 100px;
+}
+#Yard_Name{
+    outline: none;
+    background-color: inherit;
+    border: none;
+    border-bottom: 2px solid #ffffff4d;
+    margin-top:-40px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+.img{
+    float: right;
+    width: 400px;
+    position: absolute;
+    margin-left: 950px;
+    margin-top: -400px;
+    animation: rotate 20s infinite linear;
+    filter: drop-shadow(2px 2px 8px #0000008d);
+}
+@keyframes rotate {
+   0%{transform: rotateZ(360deg);}
+   100%{transform: rotateZ(0deg);}
+}
+.yard_search{
+    color: black;
+    font-family: monospace;
+    
+}
+.input_edit{
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    border-bottom: white 2px solid;
+    text-align: center;
+    width: 400px;
+}
+
+#dncpop{
+    /* width: 100px; */
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    /* margin-left: 0px; */
+    margin-top: -60px;
+    /* margin-bottom: 70px; */
+    color: red;
+    font-weight: 30px;
+    font-size: 35px;
+    transition-property: none;
+    animation: pop infinite 1.5s linear;
+}
+@keyframes pop {
+    0%{
+       color: red;
+       /* opacity: 0; */
+       text-shadow: 2px 2px 5px white;
+    }
+    100%{
+        /* opacity: 1; */
+    }
+}
+/* loader */
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
