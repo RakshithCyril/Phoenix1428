@@ -59,23 +59,23 @@ app.patch('/DNC/:id', async(req,res)=>{
     res.render('yard_details',{test})
     })
 })
-app.get('/edit/:id',async(req,res)=>{
-    const {id} = req.params
-    const test = await yards.findById(id)   
-    res.render("yard_edit",{test})
-})
-app.patch('/edit/:id',async(req,res,)=>{
-    const {id} = req.params
-    const update = await yards.findByIdAndUpdate(id,req.body,{runValidators:true , new:true})
-    .then(()=>{
-        console.log('done')
-    })
-    .catch(async()=>{
-        const {id} = req.params
-    const test = await yards.findById(id)
-    res.render('yard_details',{test})
-    })
-})
+// app.get('/edit/:id',async(req,res)=>{
+//     const {id} = req.params
+//     const test = await yards.findById(id)   
+//     res.render("yard_edit",{test})
+// })
+// app.patch('/edit/:id',async(req,res,)=>{
+//     const {id} = req.params
+//     const update = await yards.findByIdAndUpdate(id,req.body,{runValidators:true , new:true})
+//     .then(()=>{
+//         console.log('done')
+//     })
+//     .catch(async()=>{
+//         const {id} = req.params
+//     const test = await yards.findById(id)
+//     res.render('yard_details',{test})
+//     })
+// })
 app.use((err,req,res,next)=>{
     const {message = 'Something went wrong' ,status = 500} = err;
     res.status(status).render('error')
