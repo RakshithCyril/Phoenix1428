@@ -10,6 +10,7 @@
     <title>Phoenix</title>
 </head>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
     .a{
 text-decoration: none;
 color: #ffffff90;
@@ -20,12 +21,13 @@ margin-bottom: 20px;
         color: white;
     }
     h1{
+        font-family: 'Rampart One', cursive;
        padding-top: 50px;
     }
 </style>
 <body>
     <%- include ('nav') %> 
-    <ul><h1 style="color: white; margin:40px; text-align: center; font-family: monospace;">PHOENIX</h1>
+    <ul><h1 style="color: white; margin:40px; text-align: center; ">PHOENIX</h1>
         
             <% for(let i=0;i<3966;i++){ %> 
             <a class="a" href="/yards/<%=test[i]._id%>"><%=  test[i].Yard_Name %> </a><br>

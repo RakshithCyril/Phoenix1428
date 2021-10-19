@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
 :root{
    --formfont:'Goudy Bookletter 1911', serif;
    --inputfont:'Caveat', cursive;
 }
 body{
     background-image: url('https://images.pexels.com/photos/3930092/pexels-photo-3930092.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-    
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: right;
@@ -14,7 +14,6 @@ body{
 }
 nav{
     border-bottom:1px solid black ;
-    
 box-shadow: 2px 2px 8px black;
 }
 #search{
@@ -39,12 +38,12 @@ color: white;
     margin-top: 180px;
     padding: 30px;
 }
-.mt-5search h1{
+/* .mt-5search h1{
     font-weight: 900;
     font-size: 60px;
     margin-bottom: 40px;
     font-family:monospace
-}
+} */
 .mt-5search label{
 font-family: var(--inputfont);
 font-size: 30px;
