@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        margin: 100px 0px 0px 800px;
+        color: white;
+    }
+    form{
+        margin-top: 60px;
+        margin-left: 670px;
+        color: white;
+        font-family: monospace;
+        font-size: x-large;
+    }
+    #username{
+        width: 250px;
+    }
+    #password{
+        width: 250px;
+    }
+    #phone{
+        width: 280px;
+    }
+    #email{
+        width: 280px;
+    }
+    label{
+        position: absolute;
+        margin-top: 10px;
+    }
+    
+    button{
+        border-radius: 10px;
+        margin-left: 160px;
+        margin-top: 30px;
+    }
+</style>
+<body>
+    <%- include ('nav') %> 
+    <h1>Register</h1>
+    <form action="/register" method="post">
+        <label for="username">Enter Email :</label>
+        <input style="margin-left: 145px;" placeholder="Enter Email" class="input_edit" type="email" id="email" name="email"><br>
+        <label for="password">Enter Phone :</label>
+        <input style="margin-left: 145px;" placeholder="Enter Phone" class="input_edit" type="number" id="phone" name="phone"><br>
+        <label for="password">Enter Username :</label>
+        <input style="margin-left: 175px;" placeholder="Enter Username" class="input_edit" type="text" id="username" name="username"><br>
+        <label for="password">Enter Password :</label>
+        <input style="margin-left: 175px;" placeholder="Enter Password" class="input_edit" type="text" id="password" name="password"><br>
+
+        <button class="btn-primary">Submit</button>
+    </form>
+    
+</body>
+</html>

@@ -38,12 +38,6 @@ color: white;
     margin-top: 180px;
     padding: 30px;
 }
-/* .mt-5search h1{
-    font-weight: 900;
-    font-size: 60px;
-    margin-bottom: 40px;
-    font-family:monospace
-} */
 .mt-5search label{
 font-family: var(--inputfont);
 font-size: 30px;
