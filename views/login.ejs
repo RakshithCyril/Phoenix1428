@@ -10,6 +10,27 @@
     <title>Phoenix</title>
 </head>
 <style>
+     @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+  
+  .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.navbar-brand{
+  font-family:'Raleway', sans-serif ;
+}
+
+a:hover{
+  color: white;
+  
+}
+#logout{
+  /* background-color: blue; */
+  padding: 0%;
+  margin-top: -80px;
+  padding: 50px 0px 0px 300px;
+}
     h1{
         margin: 100px 0px 0px 800px;
         color: white;
@@ -43,7 +64,21 @@
     }
 </style>
 <body>
-    <%- include ('nav') %> 
+  <div class="sticky">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/allyards">Phoenix</a>
+        <form id="logout" action="/logout" method="post"><button class="btn-primary">logout</button></form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
     <h1>login</h1>
     <form action="/login" method="post">
         <label for="username">Username :</label>

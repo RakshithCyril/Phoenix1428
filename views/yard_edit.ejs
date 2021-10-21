@@ -22,9 +22,52 @@
         margin-left: 150px;
         margin-top: 30px;
     }
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+  
+  .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.navbar-brand{
+  font-family:'Raleway', sans-serif ;
+}
+
+a:hover{
+  color: white;
+  
+}
+#logout{
+  margin-left: 950px;
+
+  /* background-color: blue; */
+  padding: 0%;
+  margin-top: -85px;
+  padding: 50px 0px 0px 0px;
+} 
+#logout button{
+  border-radius: 10px;
+  /* padding: 5px; */
+}
 </style>
 <body>
-    <%- include('nav') %> 
+    
+
+  <div class="sticky">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/allyards">Phoenix</a>
+        <form id="logout" action="/logout" method="post"><button class="btn-primary">Logout</button></form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
     <form method="POST" action="/edit/<%= test._id %>?_method=PATCH">
         <label for="yard_name">Enter yard name:</label>
         <input style="margin-left: 33px;" placeholder="Enter yard name" value="<%= test.Yard_Name.trim() %> " class="input_edit" type="text" id="yard_name" name="Yard_Name"><br>

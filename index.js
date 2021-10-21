@@ -32,17 +32,16 @@ app.use(express.static(path.join(__dirname,'options')))
 app.use(express.urlencoded({extended:true}))
 app.use(methodOverride('_method'))
 app.use(session({secret:'changeit'}))
+
 const requirelogin = (req,res,next)=>{
     if(!req.session.user_id){
-        return res.redirect('login')
-    }else{
-        res.redirect('https://phoenix01.herokuapp.com/allyards')
+        return res.redirect('/login')
     }
     next()
  }
 
 app.get('/',requirelogin ,(req,res)=>{
-    res.redirect('/register')
+    res.redirect('/login')
 })
 app.get('/register',(req,res)=>{
     res.render('register')
@@ -71,9 +70,7 @@ app.get('/login',(req,res)=>{
 app.post('/login',async(req,res)=>{
     const {username,password} = req.body
     const user = await User.findOne({user:username})
-    console.log(user)
     const validPass = await bcrypt.compare(password, user.password)
-    console.log(validPass)
     if(validPass){
         req.session.user_id = user._id  
         res.redirect('/allyards')
@@ -86,15 +83,15 @@ app.get('/logout',(req,res)=>{
     res.redirect('/login')
 })
 app.post('/logout',(req,res)=>{
-    req.session.user_id = null
-    res.redirect('/login')
+    req.session.user_id = null 
+    return res.redirect('/login')
 })
 
-app.get('/allyards',requirelogin, async(req,res)=>{
-    const test = await yards.find({},{'Yard_Name' :1 , '_id' : 1 })
-    res.render('all_yards',{test})
+app.get('/allyards', requirelogin, async(req,res)=>{
+        const test = await yards.find({},{'Yard_Name' :1 , '_id' : 1 })
+        res.render('all_yards',{test})
 })
-app.get('/yards/:id',requirelogin, async(req,res,next)=>{
+app.get('/yards/:id', async(req,res,next)=>{
     const {id} = req.params
     const test = await yards.findById(id)
     if(!test){
