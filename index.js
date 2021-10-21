@@ -36,7 +36,7 @@ const requirelogin = (req,res,next)=>{
     if(!req.session.user_id){
         return res.redirect('login')
     }else{
-        res.redirect('/allyards')
+        res.redirect('https://phoenix01.herokuapp.com/allyards')
     }
     next()
  }
@@ -90,11 +90,11 @@ app.post('/logout',(req,res)=>{
     res.redirect('/login')
 })
 
-app.get('/allyards', async(req,res)=>{
+app.get('/allyards',requirelogin, async(req,res)=>{
     const test = await yards.find({},{'Yard_Name' :1 , '_id' : 1 })
     res.render('all_yards',{test})
 })
-app.get('/yards/:id', async(req,res,next)=>{
+app.get('/yards/:id',requirelogin, async(req,res,next)=>{
     const {id} = req.params
     const test = await yards.findById(id)
     if(!test){
