@@ -76,7 +76,7 @@ app.post('/login',async(req,res)=>{
     console.log(validPass)
     if(validPass){
         req.session.user_id = user._id  
-        res.redirect('http://localhost:3000/allyards')
+        res.redirect('/allyards')
     }else{
         res.send('error')
     }
