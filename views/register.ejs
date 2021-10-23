@@ -42,10 +42,43 @@
         border-radius: 10px;
         margin-left: 160px;
         margin-top: 30px;
-    }
+    } @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+  
+  .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.navbar-brand{
+  font-family:'Raleway', sans-serif ;
+}
+
+a:hover{
+  color: white;
+  
+}
+
+   
+    
+    
+   
 </style>
 <body>
-    <%- include ('nav') %> 
+    <div class="sticky">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/allyards">Phoenix</a>
+            <!-- <form id="logout" action="/logout" method="post"><button class="btn-primary">logout</button></form> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
     <h1>Register</h1>
     <form action="/register" method="post">
         <label for="username">Enter Email :</label>

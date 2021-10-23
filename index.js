@@ -43,27 +43,27 @@ const requirelogin = (req,res,next)=>{
 app.get('/',requirelogin ,(req,res)=>{
     res.redirect('/login')
 })
-// app.get('/register',(req,res)=>{
-//     res.render('register')
-// })
-// app.post('/register',async (req,res)=>{
-//     const {password ,username,email,phone} = req.body
-//     const hash = await bcrypt.hash(password,12)
-//     const user = new User({
-//         user:username,
-//         password:hash,
-//         email:email,
-//         phone:phone,
-//     })
-//     await user.save()
-//     .then(dat =>{
-//         consol.log('done')
-//     }).catch(err =>{
-//         res.redirect('/allyards')
-//     })
-//     res.render('all_yards')
+app.get('/register',(req,res)=>{
+    res.render('register')
+})
+app.post('/register',async (req,res)=>{
+    const {password ,username,email,phone} = req.body
+    const hash = await bcrypt.hash(password,12)
+    const user = new User({
+        user:username,
+        password:hash,
+        email:email,
+        phone:phone,
+    })
+    await user.save()
+    .then(dat =>{
+        consol.log('done')
+    }).catch(err =>{
+        res.redirect('/allyards')
+    })
+    res.render('all_yards')
 
-// })
+})
 app.get('/login',(req,res)=>{
     res.render('login')
 })
