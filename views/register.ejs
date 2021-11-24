@@ -14,7 +14,18 @@
         margin: 100px 0px 0px 800px;
         color: white;
     }
-    form{
+    @media only screen and (max-width: 600px) {
+      #form{
+        margin: 0px 0px 0px 20px;
+      }
+      #form input{
+        width: 160px ;
+      }
+      #register{
+        margin: 30px 0px 30px 140px;
+      }
+    }
+    .form{
         margin-top: 60px;
         margin-left: 670px;
         color: white;
@@ -38,7 +49,7 @@
         margin-top: 10px;
     }
     
-    button{
+    #button{
         border-radius: 10px;
         margin-left: 160px;
         margin-top: 30px;
@@ -49,38 +60,18 @@
   top: 0;
   width: 100%;
 }
-.navbar-brand{
-  font-family:'Raleway', sans-serif ;
-}
+
 
 a:hover{
   color: white;
   
 }
-
-   
-    
-    
    
 </style>
 <body>
-    <div class="sticky">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/allyards">Phoenix</a>
-            <!-- <form id="logout" action="/logout" method="post"><button class="btn-primary">logout</button></form> -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    <h1>Register</h1>
-    <form action="/register" method="post">
+    <%- include('nav') %>
+    <h1 id="register">Register</h1>
+    <form id="form" class="form" action="/register" method="post">
         <label for="username">Enter Email :</label>
         <input style="margin-left: 145px;" placeholder="Enter Email" class="input_edit" type="email" id="email" name="email"><br>
         <label for="password">Enter Phone :</label>
@@ -90,7 +81,7 @@ a:hover{
         <label for="password">Enter Password :</label>
         <input style="margin-left: 175px;" placeholder="Enter Password" class="input_edit" type="text" id="password" name="password"><br>
 
-        <button class="btn-primary">Submit</button>
+        <button id="button" class="btn-primary">Submit</button>
     </form>
     
 </body>

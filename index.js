@@ -65,7 +65,12 @@ app.post('/register',async (req,res)=>{
 
 })
 app.get('/login',(req,res)=>{
-    res.render('login')
+    if(!req.session.user_id ){
+        res.render('login')
+       
+    }else{
+        res.redirect('/allyards')
+    }
 })
 app.post('/login',async(req,res)=>{
     const {username,password} = req.body
@@ -91,7 +96,7 @@ app.get('/allyards', requirelogin, async(req,res)=>{
         const test = await yards.find({},{'Yard_Name' :1 , '_id' : 1 })
         res.render('all_yards',{test})
 })
-app.get('/yards/:id', async(req,res,next)=>{
+app.get('/yards/:id', requirelogin, async(req,res,next)=>{
     const {id} = req.params
     const test = await yards.findById(id)
     if(!test){
@@ -99,12 +104,12 @@ app.get('/yards/:id', async(req,res,next)=>{
     }
     res.render('yard_details',{test})
 })
-app.get('/DNC/:id',async(req,res)=>{
+app.get('/DNC/:id',requirelogin,async(req,res)=>{
     const {id} = req.params
     const test = await yards.findByIdAndUpdate(id)
     res.render('DNC',{test})
 })
-app.patch('/DNC/:id', async(req,res)=>{
+app.patch('/DNC/:id', requirelogin, async(req,res)=>{
     const {id} = req.params
     const update = await yards.findByIdAndUpdate(id,req.body,{runValidators:true , new:true})
     .then(()=>{
@@ -116,12 +121,12 @@ app.patch('/DNC/:id', async(req,res)=>{
     res.render('yard_details',{test})
     })
 })
-app.get('/edit/:id',async(req,res)=>{
+app.get('/edit/:id',requirelogin,async(req,res)=>{
     const {id} = req.params
     const test = await yards.findById(id)   
     res.render("yard_edit",{test})
 })
-app.patch('/edit/:id',async(req,res,)=>{
+app.patch('/edit/:id',requirelogin,async(req,res,)=>{
     const {id} = req.params
     const update = await yards.findByIdAndUpdate(id,req.body,{runValidators:true , new:true})
     .then(()=>{
@@ -133,13 +138,17 @@ app.patch('/edit/:id',async(req,res,)=>{
     res.render('yard_details',{test})
     })
 })
-app.use((err,req,res,next)=>{
-    const {message = 'Something went wrong' ,status = 500} = err;
-    res.status(status).render('error')
-})
-app.use((req,res)=>{
-    res.status(404).render('not found')
-})
+// app.use((err,req,res,next)=>{
+//     const {message = 'Something went wrong' ,status = 500} = err;
+//     res.status(status).render('error')
+// })
+// app.use((req,res)=>{
+//     res.status(404).render('not found')
+// })
+app.get('*', function(req, res){
+    res.status(404).render('error');
+  });
+
 const port = process.env.PORT || 3000
 
 app.listen(port,()=>{

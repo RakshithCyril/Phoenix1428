@@ -28,7 +28,7 @@
         outline:none;
 
     }
-    button{
+    #button{
         margin-top: 50px;
         margin-left: 800px;
         padding: 7px;
@@ -40,9 +40,9 @@
     <form method="POST" action="/DNC/<%= test._id %>?_method=PATCH">
     <label  for="dnc"></label>
     <textarea style="margin: 200px 0px 0px 0px; position: absolute;"  placeholder="Enter DNC" id="dnc" name="DNC"><%=test.DNC %> </textarea> 
-    <button style="margin: 350px 0px 0px 0px; border:none;" class="btn-primary">Save DNC</button>
+    <button id="button" style="margin: 350px 0px 0px 0px; border:none;" class="btn-primary">Save DNC</button>
     </form>
-    <button style="margin: -38px 0px 0px 650px;border:none;padding:8px 20px 8px 20px; position: absolute;" id="clear" onclick="myFunc()" class="btn-secondary">Clear</button>
+    <button  style="margin: -38px 0px 0px 650px;border:none;padding:8px 20px 8px 20px; position: absolute; border-radius: 10px;" id="clear" onclick="myFunc()" class="btn-secondary">Clear</button>
     <script type="text/javascript">
     function myFunc (){
          document.getElementById('dnc').value = "";

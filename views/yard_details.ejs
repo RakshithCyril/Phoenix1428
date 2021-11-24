@@ -63,22 +63,7 @@ a:hover{
  
 </style>
 <body>
-  <div class="sticky">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/allyards">Phoenix</a>
-        <form id="logout" action="/logout" method="post"><button class="btn-primary">Logout</button></form>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
-
+  <%- include('nav') %>
 <div id="div" class="container m-5 yard_search">
   <h3 id="dncpop"><%= test.DNC %>  </h3>
   <h3 >Yard Name : <%= test.Yard_Name %> </h3>

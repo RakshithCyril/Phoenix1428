@@ -11,7 +11,29 @@
 </head>
 <style>
      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
-  
+     @media only screen and (max-width: 600px) {
+       #form{
+         margin: 0px 0px 0px 20px;
+       }
+       #form input{
+         width: 180px;
+       }
+       #form button{
+         margin-left: 50px;
+       }
+       #reg{
+         margin-left: -1000px;
+       }
+       #login{
+        margin:40px 0px 40px 130px;
+       
+       }
+       #button{
+         position: absolute;
+         margin: -96px 0px 0px -480px;
+       }
+     
+     }
   .sticky {
   position: fixed;
   top: 0;
@@ -35,7 +57,7 @@ a:hover{
         margin: 100px 0px 0px 800px;
         color: white;
     }
-    form{
+    .form{
         margin-top: 60px;
         margin-left: 670px;
         color: white;
@@ -53,42 +75,29 @@ a:hover{
         margin-top: 10px;
     }
     
-    button{
+    .button{
         border-radius: 10px;
         margin-left: 110px;
         margin-top: 30px;
     }
-    #register button{
+     .button2{
         position: absolute;
         margin: -96px 0px 0px 200px;
     }
+    
 </style>
 <body>
-  <div class="sticky">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/allyards">Phoenix</a>
-        <!-- <form id="logout" action="/logout" method="post"><button class="btn-primary">logout</button></form> -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
-    <h1>login</h1>
-    <form action="/login" method="post">
+  <%- include('nav') %>
+    <h1 id="login" >login</h1>
+    <form action="/login" class="form" id="form" method="post">
         <label for="username">Username :</label>
         <input style="margin-left: 120px;" placeholder="Enter user name" class="input_edit" type="text" id="username" name="username"><br>
         <label for="password">Password :</label>
         <input style="margin-left: 120px;" placeholder="Enter password" class="input_edit" type="password" id="password" name="password"><br>
-        <button class="btn-primary">Login</button>
+        <button class="btn-primary button">Login</button>
     </form>
-    <form id="register" action="/register">
-    <button class="btn-primary">Register</button></form>
+    <form id class="form" action="/register">
+    <button class="btn-primary button button2" id="button">Register</button></form>
     
 </body>
 </html>

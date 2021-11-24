@@ -10,14 +10,14 @@
     <title>Phoenix</title>
 </head>
 <style>
-    form{
+    #form{
         margin-top: 100px;
         margin-left: 600px;
         color: white;
         font-family: monospace;
         font-size: x-large;
     }
-    button{
+    #button{
         border-radius: 10px;
         margin-left: 150px;
         margin-top: 30px;
@@ -37,38 +37,11 @@ a:hover{
   color: white;
   
 }
-#logout{
-  margin-left: 950px;
 
-  /* background-color: blue; */
-  padding: 0%;
-  margin-top: -85px;
-  padding: 50px 0px 0px 0px;
-} 
-#logout button{
-  border-radius: 10px;
-  /* padding: 5px; */
-}
 </style>
 <body>
-    
-
-  <div class="sticky">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/allyards">Phoenix</a>
-        <form id="logout" action="/logout" method="post"><button class="btn-primary">Logout</button></form>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
-    <form method="POST" action="/edit/<%= test._id %>?_method=PATCH">
+  <%- include('nav') %>
+    <form id="form" method="POST" action="/edit/<%= test._id %>?_method=PATCH">
         <label for="yard_name">Enter yard name:</label>
         <input style="margin-left: 33px;" placeholder="Enter yard name" value="<%= test.Yard_Name.trim() %> " class="input_edit" type="text" id="yard_name" name="Yard_Name"><br>
         <label for="address">Enter Address:</label>
@@ -84,7 +57,7 @@ a:hover{
         <label for="warr">Enter warranty:</label>
         <input style="margin-left: 44px;" class="input_edit"value="<%= test.Warranty.trim()  %> " type="txt" placeholder="Enter warranty" id="warr" name="Warranty"><br>
         
- <button class="btn-primary">Submit</button>
+ <button id="button" class="btn-primary">Submit</button>
     </form>
     
 </body>
