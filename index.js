@@ -57,11 +57,18 @@ app.post('/register',async (req,res)=>{
     })
     await user.save()
     .then(dat =>{
-        consol.log('done')
+        console.log('done')
     }).catch(err =>{
+        console.log("ERROR")
+    }) 
+    const login = await User.findOne({user:username})
+    const validPass = await bcrypt.compare(password, user.password)
+    if(validPass){
+        req.session.user_id = user._id  
         res.redirect('/allyards')
-    })
-    res.render('all_yards')
+    }else{
+        res.redirect('/login')
+    }
 })
 app.get('/login',(req,res)=>{ 
     if(!req.session.user_id ){
