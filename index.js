@@ -43,6 +43,26 @@ const requirelogin = (req,res,next)=>{
 app.get('/',requirelogin ,(req,res)=>{
     res.redirect('/login')
 })
+app.get('/register',(req,res)=>{
+    res.render('register')
+})
+app.post('/register',async (req,res)=>{
+    const {password ,username,email,phone} = req.body
+    const hash = await bcrypt.hash(password,12)
+    const user = new User({
+        user:username,
+        password:hash,
+        email:email,
+        phone:phone,
+    })
+    await user.save()
+    .then(dat =>{
+        consol.log('done')
+    }).catch(err =>{
+        res.redirect('/allyards')
+    })
+    res.render('all_yards')
+})
 app.get('/login',(req,res)=>{ 
     if(!req.session.user_id ){
         res.render('login')
@@ -117,13 +137,9 @@ app.patch('/edit/:id',requirelogin,async(req,res,)=>{
     res.render('yard_details',{test})
     })
 })
-app.use((err,req,res,next)=>{
-    const {message = 'Something went wrong' ,status = 500} = err;
-    res.status(status).render('error')
-})
-app.use((req,res)=>{
-    res.status(404).render('not found')
-})
+app.get('*', function(req, res){
+    res.status(404).render('error');
+  })
 const port = process.env.PORT || 3000
 
 app.listen(port,()=>{
