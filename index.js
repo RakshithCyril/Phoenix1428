@@ -9,10 +9,9 @@ const excelToJson = require('convert-excel-to-json');
 const bcrypt = require('bcrypt')
 const yards= require('./models/validate')
 const methodOverride = require('method-override')
-const appError = require('./appError')
 const session = require('express-session')
 
-    mongoose.connect('mongodb+srv://cyril:sS5dGq4D9UY4iag@testdb.k9yiz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/test',{
+    mongoose.connect('mongodb+srv://@testdb.k9yiz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/test',{
     dbName:process.env.dbname,
     user:process.env.user,
     pass:process.env.password,
@@ -105,9 +104,6 @@ app.get('/allyards', requirelogin, async(req,res)=>{
 app.get('/yards/:id', requirelogin,async(req,res,next)=>{
     const {id} = req.params
     const test = await yards.findById(id)
-    if(!test){
-      return next(new appError('yard cannot not found',404))
-    }
     res.render('yard_details',{test})
 })
 app.get('/DNC/:id',requirelogin,async(req,res)=>{
