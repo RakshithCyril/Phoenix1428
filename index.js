@@ -13,9 +13,9 @@ const appError = require('./appError')
 const session = require('express-session')
 
     mongoose.connect('mongodb+srv://cyril:sS5dGq4D9UY4iag@testdb.k9yiz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/test',{
-    dbName:'phoenix',
-    user:'cyril',
-    pass:'sS5dGq4D9UY4iag',
+    dbName:process.env.dbname,
+    user:process.env.user,
+    pass:process.env.password,
     useNewUrlParser: true, 
     useUnifiedTopology: true })
     .then(() => {
@@ -31,7 +31,7 @@ app.set('view engine','ejs')
 app.use(express.static(path.join(__dirname,'options')))
 app.use(express.urlencoded({extended:true}))
 app.use(methodOverride('_method'))
-app.use(session({secret:'changeit'}))
+app.use(session({secret:process.env.SESSION}))
 
 const requirelogin = (req,res,next)=>{
     if(!req.session.user_id){
