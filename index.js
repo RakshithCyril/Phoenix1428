@@ -43,23 +43,13 @@ const requirelogin = (req,res,next)=>{
 app.get('/',requirelogin ,(req,res)=>{
     res.redirect('/login')
 })
-app.get('/register',(req,res)=>{
-    res.render('register')
-})
-app.post('/register',async (req,res)=>{
-    const {password ,username,email,phone} = req.body
-    const hash = await bcrypt.hash(password,12)
-    const user = new User({
-        user:username,
-        password:hash,
-        email:email,
-        phone:phone,
-    })
-    await user.save()
-    .then(dat =>{
-        consol.log('done')
-    }).catch(err =>{
+app.get('/login',(req,res)=>{ 
+    if(!req.session.user_id ){
+        res.render('login')
+       
+    }else{
         res.redirect('/allyards')
+<<<<<<< HEAD
     })
     res.render('all_yards')
 
@@ -70,6 +60,8 @@ app.get('/login',(req,res)=>{
        
     }else{
         res.redirect('/allyards')
+=======
+>>>>>>> 177874155092ab3ff465ac77e0d31d28da9421d8
     }
 })
 app.post('/login',async(req,res)=>{
@@ -96,7 +88,11 @@ app.get('/allyards', requirelogin, async(req,res)=>{
         const test = await yards.find({},{'Yard_Name' :1 , '_id' : 1 })
         res.render('all_yards',{test})
 })
+<<<<<<< HEAD
 app.get('/yards/:id', requirelogin, async(req,res,next)=>{
+=======
+app.get('/yards/:id', requirelogin,async(req,res,next)=>{
+>>>>>>> 177874155092ab3ff465ac77e0d31d28da9421d8
     const {id} = req.params
     const test = await yards.findById(id)
     if(!test){
@@ -109,7 +105,11 @@ app.get('/DNC/:id',requirelogin,async(req,res)=>{
     const test = await yards.findByIdAndUpdate(id)
     res.render('DNC',{test})
 })
+<<<<<<< HEAD
 app.patch('/DNC/:id', requirelogin, async(req,res)=>{
+=======
+app.patch('/DNC/:id',requirelogin, async(req,res)=>{
+>>>>>>> 177874155092ab3ff465ac77e0d31d28da9421d8
     const {id} = req.params
     const update = await yards.findByIdAndUpdate(id,req.body,{runValidators:true , new:true})
     .then(()=>{
