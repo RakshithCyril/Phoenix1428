@@ -2,14 +2,10 @@ const dot = require('dotenv')
 dot.config()
 const express = require('express')
 const app = express()
-const User = require('./models/users')
 const mongoose = require('mongoose')
 const path = require('path')
-const excelToJson = require('convert-excel-to-json');
 const bcrypt = require('bcrypt')
-const yards= require('./models/validate')
 const methodOverride = require('method-override')
-const session = require('express-session')
 
     mongoose.connect('mongodb+srv://@testdb.k9yiz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/test',{
     dbName:process.env.dbname,
@@ -39,13 +35,13 @@ const requirelogin = (req,res,next)=>{
     next()
  }
 
-app.get('/',requirelogin ,(req,res)=>{
+app.get('',requirelogin ,(req,res)=>{
     res.redirect('/login')
 })
-app.get('/register',(req,res)=>{
+app.get('',(req,res)=>{
     res.render('register')
 })
-app.post('/register',async (req,res)=>{
+app.post('',async (req,res)=>{
     const {password ,username,email,phone} = req.body
     const hash = await bcrypt.hash(password,12)
     const user = new User({
@@ -69,7 +65,7 @@ app.post('/register',async (req,res)=>{
         res.redirect('/login')
     }
 })
-app.get('/login',(req,res)=>{ 
+app.get('',(req,res)=>{ 
     if(!req.session.user_id ){
         res.render('login')
        
@@ -77,7 +73,7 @@ app.get('/login',(req,res)=>{
         res.redirect('/allyards')
     }
 })
-app.post('/login',async(req,res)=>{
+app.post('',async(req,res)=>{
     const {username,password} = req.body
     const user = await User.findOne({user:username})
     const validPass = await bcrypt.compare(password, user.password)
@@ -89,29 +85,29 @@ app.post('/login',async(req,res)=>{
     }
    
 })
-app.get('/logout',(req,res)=>{
+app.get('',(req,res)=>{
     res.redirect('/login')
 })
-app.post('/logout',(req,res)=>{
+app.post('',(req,res)=>{
     req.session.user_id = null 
     return res.redirect('/login')
 })
 
-app.get('/allyards', requirelogin, async(req,res)=>{
+app.get('', requirelogin, async(req,res)=>{
         const test = await yards.find({},{'Yard_Name' :1 , '_id' : 1 })
         res.render('all_yards',{test})
 })
-app.get('/yards/:id', requirelogin,async(req,res,next)=>{
+app.get('', requirelogin,async(req,res,next)=>{
     const {id} = req.params
     const test = await yards.findById(id)
     res.render('yard_details',{test})
 })
-app.get('/DNC/:id',requirelogin,async(req,res)=>{
+app.get('',requirelogin,async(req,res)=>{
     const {id} = req.params
     const test = await yards.findByIdAndUpdate(id)
     res.render('DNC',{test})
 })
-app.patch('/DNC/:id',requirelogin, async(req,res)=>{
+app.patch('',requirelogin, async(req,res)=>{
     const {id} = req.params
     const update = await yards.findByIdAndUpdate(id,req.body,{runValidators:true , new:true})
     .then(()=>{
@@ -123,12 +119,12 @@ app.patch('/DNC/:id',requirelogin, async(req,res)=>{
     res.render('yard_details',{test})
     })
 })
-app.get('/edit/:id',requirelogin,async(req,res)=>{
+app.get('',requirelogin,async(req,res)=>{
     const {id} = req.params
     const test = await yards.findById(id)   
     res.render("yard_edit",{test})
 })
-app.patch('/edit/:id',requirelogin,async(req,res,)=>{
+app.patch('',requirelogin,async(req,res,)=>{
     const {id} = req.params
     const update = await yards.findByIdAndUpdate(id,req.body,{runValidators:true , new:true})
     .then(()=>{
