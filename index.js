@@ -4,7 +4,6 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const path = require('path')
-const bcrypt = require('bcrypt')
 const methodOverride = require('method-override')
 
     mongoose.connect('mongodb+srv://@testdb.k9yiz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/test',{
